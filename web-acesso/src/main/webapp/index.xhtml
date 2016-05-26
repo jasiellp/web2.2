@@ -3,49 +3,59 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:h="http://java.sun.com/jsf/html"
-	
-	>
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head> 
-<title>tag tela de login</title>
+<h:head>
+
+	<meta content="UTF-8" />
+	<title>Login Form</title> 
+	<link rel="stylesheet" href="css/style.css" />
+
 </h:head>
- 
- 
- 
-<body onload="PF('dlg').show();"> 
- 
- 
-  
-	<h:form >     
-	
-	          
-   
- 
-    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
- 
-   <p:dialog   closable="false"  header="Login" widgetVar="dlg" resizable="false" draggable="false"  >
-        <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel for="username" value="Username:" />
-            <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
- 
-            <h:outputLabel for="password" value="Password:" />
-            <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
- 
-            <f:facet name="footer">
-                <p:commandButton value="Login" update="growl" actionListener="#{userLoginView.login}"
-                                 oncomplete="handleLoginRequest(xhr, status, args)" />
-            </f:facet>  
-        </h:panelGrid>
-    </p:dialog>
-</h:form>
- 
-<script type="text/javascript">
-    function handleLoginRequest(xhr, status, args) {
-        if(args.validationFailed || !args.loggedIn) {
+
+
+
+<body onload="PF('dlg').show();">
+
+
+
+	<h:form>
+
+
+
+
+		<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+		<p:dialog   closable="false" header="Login" widgetVar="dlg"
+			resizable="false" draggable="false">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="username" value="Username:" />
+				<p:inputText id="username" value="#{userLoginView.username}"
+					required="true" label="username" />
+
+				<h:outputLabel for="password" value="Password:" />
+				<p:password id="password" value="#{userLoginView.password}"
+					required="true" label="password" />
+
+				<f:facet name="footer">
+					<p:commandButton value="Login" update="growl"
+						actionListener="#{userLoginView.login}"
+						oncomplete="handleLoginRequest(xhr, status, args)" />
+				</f:facet>
+			</h:panelGrid>
+		</p:dialog>
+	</h:form>
+
+	<script type="text/javascript">
+
+function handleLoginRequest(xhr, status, args) 
+{
+        if(args.validationFailed || !args.loggedIn) 
+        {
             PF('dlg').jq.effect("shake", {times:5}, 100);
         }
-        else {
+        else 
+        {
             PF('dlg').hide();
             $('#loginLink').fadeOut();
         }
