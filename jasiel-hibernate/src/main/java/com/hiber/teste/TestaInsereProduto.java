@@ -1,25 +1,20 @@
 package com.hiber.teste;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import com.hiber.model.Produto;
+import com.hiber.util.Util;
+ 
 
-import model.Produto;
-public class TestaInsereProduto {
-
-public static void main(String[] args)
+public class TestaInsereProduto
 {
-	EntityManagerFactory factory =   Persistence.createEntityManagerFactory("lojavirtualDB");
-	EntityManager em = factory.createEntityManager();
-	
-	Produto p = new Produto();
-	p.setNome("camiseta");
-	p.setPreco(12.23);
-	
-	em.getTransaction().begin();
-	
-	em.persist(p);
-	
-	em.getTransaction().commit();
-}
+
+	public static void main(String[] args)
+	{
+		 
+
+		Produto p = new Produto();
+		p.setNome("p De Borracha");
+		p.setPreco(12999.23);
+
+		Util.insert(p);
+	}
 }
